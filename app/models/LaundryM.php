@@ -25,7 +25,10 @@ class LaundryM extends \DB\SQL\Mapper {
 
     public function get_sekitar($lokasi)
     {
-        return $this->db->exec("SELECT t.*, FLOOR((6371 * ACOS(COS(RADIANS(-6.1255871)) * COS(RADIANS(t.latitude)) * COS(RADIANS(t.longitude) - RADIANS(106.2249587)) + SIN(RADIANS(-6.1253871)) * SIN(RADIANS(t.latitude))))) AS distance
+        $lat = floatval($lokasi['latitude']);
+        $lng = floatval($lokasi['longitude']);
+        
+        return $this->db->exec("SELECT t.*, FLOOR((6371 * ACOS(COS(RADIANS({$lat})) * COS(RADIANS(t.latitude)) * COS(RADIANS(t.longitude) - RADIANS({$lng})) + SIN(RADIANS({$lat})) * SIN(RADIANS(t.latitude))))) AS distance
                             FROM tb_laundry t
                             HAVING distance < {$this->jarak}
                             ORDER BY distance ASC;");

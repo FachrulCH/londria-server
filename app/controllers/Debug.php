@@ -63,5 +63,23 @@ class Debug {
         echo '<pre>';
         print_r($list);
     }
+    
+    function rating(){
+        $id = 1;
+        $rate = new \models\RatingM();
+        $r = $rate->get_rating2($id);
+        echo '<pre>';
+        print_r($r);
+        
+        //$key = array_search(5, array_column($r, 'rate'));
+        
+        //print_r($key);
+    }
+    
+    function komen(){
+    echo '<pre>';
+        $kom = new \models\CommentsM();
+        print_r($kom->get_komen(1));
+    }
 
 }
