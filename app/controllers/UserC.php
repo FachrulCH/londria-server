@@ -13,22 +13,33 @@ namespace controllers;
  *
  * @author fachrul.choliluddin
  */
-class UserC {
+class UserC extends \controllers\Londria{
     public function tracking($f3) {
         $user_id = $f3->get('PARAMS.user_id');
         echo 'ambil profilnya si '.$user_id;
     }
     
     public function baru($f3){
-        $obj_user = new \models\UsersM();
-//        $obj_user->reset();
-        $obj_user->nama_lengkap = "kiki";
-        $obj_user->cek = "ogi";
-        $simpen = $obj_user->save();
-        echo "<pre>";
-        //var_dump($obj_user->load());
-        //$return = $obj_user->load();
-        //$return = $obj_user->populate();
-        print_r($simpen);
+        $post = $f3->get('POST');
+        $data = $f3->scrub($post);
+        
+        $user = new \models\UsersM();
+        $simpan = $user->baru($data);
+        
+        if ($simpan === 1){
+            $this->set_code("00");
+            $this->set_msg("Email sudah digunakan");
+            $this->set_data("user", []);
+        }elseif($simpan === 2){
+            $this->set_code("01");
+            $this->set_msg("User tersimpan");
+            $this->set_data("user", []);
+        }else{
+            $this->set_code("00");
+            $this->set_msg("Terdapat error!");
+            $this->set_data("user", []);
+        }
+        
+        $this->return_json();
     }
 }

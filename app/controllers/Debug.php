@@ -81,5 +81,25 @@ class Debug {
         $kom = new \models\CommentsM();
         print_r($kom->get_komen(1));
     }
+    
+    function tracking(){
+        $order = new \models\OrdersM();
+        
+        $data = $order->get_tracking('11');
+        
+        foreach ($data as $k) {
+            $list[] = $k->cast();
+        }
+        
+        echo '<pre>';
+        //echo "ini dia: ".$data[0]->id_user;
+        print_r($list);
+    }
+    
+    function hapusorder(){
+        $order = new \models\OrdersM();
+        $a = $order->set_delete(5);
+        var_dump($a);
+    }
 
 }
