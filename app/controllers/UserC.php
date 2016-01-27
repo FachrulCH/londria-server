@@ -26,14 +26,14 @@ class UserC extends \controllers\Londria{
         $user = new \models\UsersM();
         $simpan = $user->baru($data);
         
-        if ($simpan === 1){
+        if ($simpan["status"] === 1){
             $this->set_code("00");
             $this->set_msg("Email sudah digunakan");
             $this->set_data("user", []);
-        }elseif($simpan === 2){
+        }elseif($simpan["status"] === 2){
             $this->set_code("01");
             $this->set_msg("User tersimpan");
-            $this->set_data("user", []);
+            $this->set_data("user", ["id"=>$simpan['uid'], "nama"=>$post['nama'], "token"=>"99999"]);
         }else{
             $this->set_code("00");
             $this->set_msg("Terdapat error!");
@@ -41,5 +41,39 @@ class UserC extends \controllers\Londria{
         }
         
         $this->return_json();
+    }
+    
+    public function simpan($f3)
+    {
+        $post = $f3->get('POST');
+        $data = $f3->scrub($post);
+        
+        $user = new \models\UsersM();
+        $simpan = $user->simpan($data);
+        
+        if ($simpan === 1){
+            $this->set_code("00");
+            $this->set_msg("Tidak ada perubahan data");
+            $this->set_data("user", []);
+        }elseif($simpan === 2){
+            $this->set_code("01");
+            $this->set_msg("User tersimpan");
+            $this->set_data("user", []);
+        }else{
+            $this->set_code("00");
+            $this->set_msg("User tidak ditemukan");
+            $this->set_data("user", []);
+        }
+        
+        $this->return_json();
+    }
+    
+    public function masuk($f3)
+    {
+        $post = $f3->get('POST');
+        $data = $f3->scrub($post);
+        
+        $log = new \models\UsersM();
+        $login = $log->masuk($data[], "11");
     }
 }

@@ -49,12 +49,12 @@ class Debug {
     {
         //$f3->error(401);
     }
-    
+
     public function header($f3)
     {
         print_r($f3->get("HEADERS"));
     }
-    
+
     public function sekitar($f3)
     {
         $lokasi = [];
@@ -63,43 +63,77 @@ class Debug {
         echo '<pre>';
         print_r($list);
     }
-    
-    function rating(){
+
+    function rating()
+    {
         $id = 1;
         $rate = new \models\RatingM();
         $r = $rate->get_rating2($id);
         echo '<pre>';
         print_r($r);
-        
+
         //$key = array_search(5, array_column($r, 'rate'));
-        
         //print_r($key);
     }
-    
-    function komen(){
-    echo '<pre>';
+
+    function komen()
+    {
+        echo '<pre>';
         $kom = new \models\CommentsM();
         print_r($kom->get_komen(1));
     }
-    
-    function tracking(){
+
+    function tracking()
+    {
         $order = new \models\OrdersM();
-        
+
         $data = $order->get_tracking('11');
-        
+
         foreach ($data as $k) {
             $list[] = $k->cast();
         }
-        
+
         echo '<pre>';
         //echo "ini dia: ".$data[0]->id_user;
         print_r($list);
     }
-    
-    function hapusorder(){
+
+    function hapusorder()
+    {
         $order = new \models\OrdersM();
         $a = $order->set_delete(5);
         var_dump($a);
+    }
+
+    function login()
+    {
+        $log = new \models\UsersM();
+        $login = $log->masuk("kura@wall", "111");
+
+        echo '<pre>';
+        print_r($login->cast());
+    }
+
+    function notif($f3)
+    {
+        $apiKey = "AIzaSyB1Xv5kIpUS3h_bZmUcBZKnxsEHHFIYMkU";
+        $message = "Emang bisa Pake server ya?";
+        $devices = "dvvFRo7ZWHY:APA91bE0Ey_0DRJ6iJV0h5TM75-SI8sP8GcOaNMchpnXESEWzmL8dCX-EWCTPA7b_px9EnCdM_dTDhwyAMbC0xLdarHUeEBOhBsoCIR9UDo7R4E7qkm0AI76O5f52joX8-xBi09nKdI5";
+        $data = array(
+            "title" => "Judul dari server 2",
+            "message" => "Push number 2",
+            "info" => "super secret info",
+            "waktu" => $f3->get('sekarang'),
+            "detailan" => "ini adalah detail info",
+            "content-available" => "1"
+        );
+
+
+        $notif = new \controllers\GCMPushMessage($apiKey);
+        $notif->setDevices($devices);
+        $response = $notif->send($message, $data);
+
+        echo $response;
     }
 
 }
