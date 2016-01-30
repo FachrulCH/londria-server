@@ -38,7 +38,7 @@ class OrderC extends \controllers\Londria {
         $simpan = $order->save();
         if ($order->get('_id') > 1) {
             $this->set_code("01");
-            $this->set_msg("Permintaan telah dikirimkan, harap menunggu konfirmasi laundry");
+            $this->set_msg($order->get('_id'));
             $this->set_data("permintaan", ['OK']);
             $this->return_json();
         } else {

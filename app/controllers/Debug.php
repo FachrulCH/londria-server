@@ -117,15 +117,18 @@ class Debug {
     function notif($f3)
     {
         $apiKey = "AIzaSyB1Xv5kIpUS3h_bZmUcBZKnxsEHHFIYMkU";
-        $message = "Emang bisa Pake server ya?";
-        $devices = "dvvFRo7ZWHY:APA91bE0Ey_0DRJ6iJV0h5TM75-SI8sP8GcOaNMchpnXESEWzmL8dCX-EWCTPA7b_px9EnCdM_dTDhwyAMbC0xLdarHUeEBOhBsoCIR9UDo7R4E7qkm0AI76O5f52joX8-xBi09nKdI5";
+        $message = "Langsung dari kampus";
+        //$devices = "dvvFRo7ZWHY:APA91bE0Ey_0DRJ6iJV0h5TM75-SI8sP8GcOaNMchpnXESEWzmL8dCX-EWCTPA7b_px9EnCdM_dTDhwyAMbC0xLdarHUeEBOhBsoCIR9UDo7R4E7qkm0AI76O5f52joX8-xBi09nKdI5";
+        $devices = "fVTWGRj2K3o:APA91bH9n5sRButOqJKTik4dTgeSjZ4LERpUxgXcq2RcZ8Lynh9LNq4dn9zvGkwzBkFE4a4Der1Wt_NkTaP3WJOtU6gSedyGpDRZOYhE1BdKyfxT8AcMKsUot080_kKqVnCQiFz6pqSm";
         $data = array(
-            "title" => "Judul dari server 2",
-            "message" => "Push number 2",
-            "info" => "super secret info",
+            "title" => "Oke baiklah",
+            "message" => "Kurir kami sedang menuju ke lokasi kamu",
+            //"image" => "https://dl.dropboxusercontent.com/u/887989/antshot.png",
+            "content-available" => "1",
+            "tautan" => "pg-tracking.html",
             "waktu" => $f3->get('sekarang'),
             "detailan" => "ini adalah detail info",
-            "content-available" => "1"
+            "gambar" => "https://dl.dropboxusercontent.com/u/887989/antshot.png"
         );
 
 
