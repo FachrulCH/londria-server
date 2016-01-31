@@ -36,7 +36,7 @@ class UsersM extends \DB\SQL\Mapper {
             $this->gender = $data['gender'];
             $this->latitude = $data['posisi']['latitude'];
             $this->longitude = $data['posisi']['longitude'];
-
+            $this->katasandi = md5($data['katasandi']);
             $this->save();
             
             $uid = $this->get('_id');
@@ -76,7 +76,7 @@ class UsersM extends \DB\SQL\Mapper {
     
     public function masuk($email, $paswd)
     {
-        return $this->load(array('email=? AND katasandi=?', $email, $paswd));
+        return $this->load(array('email=? AND katasandi=?', $email, md5($paswd)));
     }
 
 }

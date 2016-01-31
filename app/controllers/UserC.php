@@ -75,6 +75,23 @@ class UserC extends \controllers\Londria{
         $data = $f3->scrub($post);
         
         $log = new \models\UsersM();
-        $login = $log->masuk($data[], "11");
+        
+        $login = $log->masuk($data['email'], $data['pass']);
+        
+        $gagalLogin = is_null($login->id);
+        
+        if ($gagalLogin === false){
+            //berhasil masuk
+            $this->set_code("01");
+            $this->set_msg("Berhasil masuk");
+            $this->set_data("user", ["token"=>"99999"]);
+        }else{
+            $this->set_code("00");
+            $this->set_msg("Email atau kata sandi salah!");
+            $this->set_data("user", []);
+        }
+        
+        $this->return_json();
+        
     }
 }

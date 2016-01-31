@@ -111,7 +111,11 @@ class Debug {
         $login = $log->masuk("kura@wall", "111");
 
         echo '<pre>';
-        print_r($login->cast());
+        $result = is_null($login->id);
+        var_dump($result);
+        
+        
+        //print_r($login->cast());
     }
 
     function notif($f3)
@@ -147,6 +151,12 @@ class Debug {
         echo $a;
         echo '<hr/>';
         echo $londria->didecode($a);
+    }
+    
+    function ftp(){
+        
+        echo "Mantap ";
+        echo "sukses";
     }
 
 }
