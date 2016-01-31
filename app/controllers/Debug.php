@@ -120,6 +120,7 @@ class Debug {
         $message = "Langsung dari kampus";
         //$devices = "dvvFRo7ZWHY:APA91bE0Ey_0DRJ6iJV0h5TM75-SI8sP8GcOaNMchpnXESEWzmL8dCX-EWCTPA7b_px9EnCdM_dTDhwyAMbC0xLdarHUeEBOhBsoCIR9UDo7R4E7qkm0AI76O5f52joX8-xBi09nKdI5";
         $devices = "fVTWGRj2K3o:APA91bH9n5sRButOqJKTik4dTgeSjZ4LERpUxgXcq2RcZ8Lynh9LNq4dn9zvGkwzBkFE4a4Der1Wt_NkTaP3WJOtU6gSedyGpDRZOYhE1BdKyfxT8AcMKsUot080_kKqVnCQiFz6pqSm";
+        
         $data = array(
             "title" => "Oke baiklah",
             "message" => "Kurir kami sedang menuju ke lokasi kamu",
@@ -137,6 +138,15 @@ class Debug {
         $response = $notif->send($message, $data);
 
         echo $response;
+    }
+    
+    function tersembunyi(){
+        $londria = new \controllers\Londria();
+        $msg = 1;
+        $a = $londria->diencode($msg);
+        echo $a;
+        echo '<hr/>';
+        echo $londria->didecode($a);
     }
 
 }

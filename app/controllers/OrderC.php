@@ -53,9 +53,10 @@ class OrderC extends \controllers\Londria {
     {
         $post = $f3->get('POST');
         $post = $f3->scrub($post);
+        $user_id = $this->didecode($post['id']);
 
         $order = new \models\OrdersM();
-        $tracking = $order->get_tracking($post['id']);
+        $tracking = $order->get_tracking($user_id);
         foreach ($tracking as $k) {
             $track = $k->cast();
             
