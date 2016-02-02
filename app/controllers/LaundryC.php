@@ -91,5 +91,36 @@ class LaundryC extends \controllers\Londria {
         //print_r($londri);
         $this->return_json();
     }
+    
+    public function get_promo($f3)
+    {
+        $post = $f3->get('POST');
+        $lokasi = $f3->scrub($post['location']);
+        
+        $promo = new \models\PromoM();
+        $promosi = $promo->get_promo($lokasi);
+        if(empty($promosi)){
+            $this->set_code("00");
+            $this->set_msg("Tidak ditemukan promosi di sekitarmu sekarang");
+            $this->set_data("promo", []);
+        }else{
+            $this->set_code("01");
+            $this->set_msg("OK");
+            $data = [];
+            foreach ($promosi as $p) {
+                $data[] = [ "id"=> $p['id'],
+                            "id_laundry"=> $p['id_laundry'],
+                            "title"=> $p['judul'],
+                            "foto"=> $p['foto'],
+                            "desc"=> $p['desc'],
+                            "date"=> $p['tgl_buat'],
+                            "date_exp"=> $p['tgl_exp']
+                            ];
+            }
+            
+            $this->set_data("promo", $data);
+        }
+        $this->return_json();
+    }
 
 }
