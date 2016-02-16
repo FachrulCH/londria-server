@@ -18,8 +18,23 @@ class Debug {
     //put your code here
     public function koneksi($f3)
     {
-        echo '<pre>';
-        print_r($f3);
+        $ldr = new \controllers\Londria;
+//        var_dump($ldr->didecode('bG9uZHJpYTIx'));
+//        echo '<pre>';
+//        print_r($f3);
+        
+        $post = $f3->get('POST');
+        $data = $f3->scrub($post);
+        $header = $f3->get("HEADERS");
+        $dataHeader = $f3->scrub($header);
+        $user_id = $ldr->didecode($dataHeader['Id']);
+        echo "aslinya: ".$dataHeader['Id'];
+        echo "<br/>useridny: ".$user_id;
+        
+        print_r($dataHeader);
+        
+        echo '<hr/>';
+        print_r($data);
     }
 
     public function getlayanan()

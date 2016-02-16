@@ -13,25 +13,26 @@ class OrderC extends \controllers\Londria {
     {
         $post = $f3->get('POST');
         $data = $f3->scrub($post);
-        $headers = $f3->get('HEADERS');
-        $data = $f3->scrub($headers);
+        $header = $f3->get("HEADERS");
+        $dataHeader = $f3->scrub($header);
+        $user_id = $this->didecode($dataHeader['Id']); //harus gede dapannya
 
 //        echo '<pre>';
 //        print_r($headers);
 //        print_r($post);
 
         $order = new \models\OrdersM();
-        $order->id_user = $headers['Id'];
-        $order->id_laundry = $post['id_laundry'];
-        $order->alamat = $post['alamat'];
-        $order->latitude = $post['tkp']['latitude'];
-        $order->longitude = $post['tkp']['longitude'];
-        $order->no_tlp = $post['no_tlp'];
+        $order->id_user = $user_id;
+        $order->id_laundry = $data['id_laundry'];
+        $order->alamat = $data['alamat'];
+        $order->latitude = $data['tkp']['latitude'];
+        $order->longitude = $data['tkp']['longitude'];
+        $order->no_tlp = $data['no_tlp'];
 
-        $order->jenis_layanan = $post['jenis_layanan'];
-        $order->grand_total = $post['grand_total'];
-        $order->produk = $post['produk'];
-        $order->catatan = $post['catatan'];
+        $order->jenis_layanan = $data['jenis_layanan'];
+        $order->grand_total = $data['grand_total'];
+        $order->produk = $data['produk'];
+        $order->catatan = $data['catatan'];
         $order->dibuat = $f3->get('sekarang');
         $order->status = 0;
 
