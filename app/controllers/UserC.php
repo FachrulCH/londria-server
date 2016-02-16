@@ -21,10 +21,13 @@ class UserC extends \controllers\Londria{
     
     public function baru($f3){
         $post = $f3->get('POST');
+        $header = $f3->get("HEADERS");
+        
+        $dataHeader = $f3->scrub($header);
         $data = $f3->scrub($post);
         
         $user = new \models\UsersM();
-        $simpan = $user->baru($data);
+        $simpan = $user->baru($data, $dataHeader['Regid']);
         $uid = $this->diencode($simpan['uid']);
         
         if ($simpan["status"] === 1){

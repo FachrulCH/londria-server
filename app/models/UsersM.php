@@ -20,7 +20,7 @@ class UsersM extends \DB\SQL\Mapper {
         parent::__construct($db, 'tb_users');
     }
 
-    public function baru($data)
+    public function baru($data, $google_id)
     {
         $this->reset();
         $this->load(array('email=:pid', ':pid' => $data['email']));
@@ -37,6 +37,7 @@ class UsersM extends \DB\SQL\Mapper {
             $this->latitude = $data['posisi']['latitude'];
             $this->longitude = $data['posisi']['longitude'];
             $this->katasandi = md5($data['katasandi']);
+            $this->google_id = $google_id;
             $this->save();
             
             $uid = $this->get('_id');
