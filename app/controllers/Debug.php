@@ -52,7 +52,10 @@ class Debug {
 
     public function header($f3)
     {
-        print_r($f3->get("HEADERS"));
+        $header = $f3->get("HEADERS");
+        $post = $f3->get('POST');
+        
+        echo $post['nama']. " ". $header['Regid'];
     }
 
     public function sekitar($f3)
