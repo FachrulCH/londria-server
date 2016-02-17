@@ -81,6 +81,15 @@ class OrderC extends \controllers\Londria {
                 ]
             ];
             switch ($track['status']) {
+                // 0 = data baru
+                case 0:
+                    $status["pertama"] = [
+                        "status" => 0,
+                        "waktu" => "-"
+                    ];
+
+                    break;
+                // 1 = konfirm kurir (diajukan-proses)
                 case 1:
                     $status["pertama"] = [
                         "status" => 1,
@@ -88,13 +97,13 @@ class OrderC extends \controllers\Londria {
                     ];
 
                     break;
-                case 2:
+                case 2: // diajukan selesai
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']
                     ];
                     break;
-                case 3:
+                case 3: // dijemput proeses
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']
@@ -104,7 +113,7 @@ class OrderC extends \controllers\Londria {
                         "waktu" => "-"
                     ];
                     break;
-                case 4:
+                case 4: // laundry di proses
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']
@@ -118,7 +127,7 @@ class OrderC extends \controllers\Londria {
                         "waktu" => "-"
                     ];
                     break;
-                case 5:
+                case 5: // laundry selesai
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']
@@ -132,7 +141,7 @@ class OrderC extends \controllers\Londria {
                         "waktu" => $track['proses_3']
                     ];
                     break;
-                case 6:
+                case 6: // diantar in progress
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']
@@ -150,7 +159,7 @@ class OrderC extends \controllers\Londria {
                         "waktu" => "-"
                     ];
                     break;
-                case 7:
+                case 7: // pengantar selesai
                     $status["pertama"] = [
                         "status" => 2,
                         "waktu" => $track['proses_1']

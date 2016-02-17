@@ -87,7 +87,7 @@ class UserC extends \controllers\Londria{
             //berhasil masuk
             $this->set_code("01");
             $this->set_msg("Berhasil masuk");
-            $this->set_data("user", ["token"=>"99999"]);
+            $this->set_data("user", ["token"=>$login->id]);
         }else{
             $this->set_code("00");
             $this->set_msg("Email atau kata sandi salah!");

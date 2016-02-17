@@ -23,11 +23,19 @@ class OrdersM extends \DB\SQL\Mapper {
 
         return $this->find(array('id_user=:pid', ':pid' => $id), array('order' => 'dibuat DESC'));
     }
-    
+
     public function set_delete($id)
     {
         $this->load(array('id=:pid', ':pid' => $id), array('order' => 'dibuat DESC'));
         return $this->erase();
+    }
+
+    public function get_daftar_tugas($id_laundry)
+    {
+        $this->nama_user = 'SELECT nama_lengkap FROM tb_users ' .
+                'WHERE tb_orders.id_user = tb_users.id';
+        
+        return $this->find(array('id_laundry=:pid AND status in (0,5)', ':pid' => $id_laundry), array('order' => 'dibuat DESC'));
     }
 
 }

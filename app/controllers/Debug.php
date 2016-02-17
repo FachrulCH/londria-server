@@ -176,5 +176,15 @@ class Debug {
         echo "Mantap ";
         echo "sukses";
     }
+    
+    function kurir(){
+        $d = new \controllers\KurirC();
+        //$daftr = json_encode($d->get_tugas(14));
+        //$en = $d->diencode("asdf");
+        //echo $d->id_laundry;
+        //echo '<pre>';
+        //echo($daftr);
+        $d->get_tugas(14);
+    }
 
 }
