@@ -76,7 +76,7 @@ class KurirC extends UserC {
         $data = $f3->scrub($post);
         $header = $f3->get("HEADERS");
         $dataHeader = $f3->scrub($header);
-        $notes = "takenby:" . $dataHeader['token'];
+        $notes = "takenby:" . $dataHeader['Token'];
 
         $id_tugas = $data['id_tugas'];
         $tugas = new \models\OrdersM();
@@ -85,10 +85,13 @@ class KurirC extends UserC {
         $tugas->status++;
         $tugas->notes = $notes;
         $tugas->save();
-
+        
+        $notif = new Notifikasi();
+        $beritahu = $notif->kirim_notif($f3, $tugas->id_user);      
+        
         $this->set_code("01");
         $this->set_msg("Tugas dipilih");
-        $this->set_data("tugas", ["id_tugas"=>$id_tugas, "status"=>$tugas->status]);
+        $this->set_data("tugas", ["id_tugas"=>$id_tugas, "status"=>$tugas->status, "notif"=> $beritahu]);
         $this->return_json();
     }
 

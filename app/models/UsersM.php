@@ -79,5 +79,12 @@ class UsersM extends \DB\SQL\Mapper {
     {
         return $this->load(array('email=? AND katasandi=?', $email, md5($paswd)));
     }
+    
+    public function get_google_id($user_id)
+    {
+        $user = $this->load(array('id=:pid', ':pid' => $user_id));
+        
+        return trim($user->google_id);
+    }
 
 }

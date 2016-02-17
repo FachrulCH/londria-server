@@ -37,7 +37,7 @@ class UserC extends \controllers\Londria{
         }elseif($simpan["status"] === 2){
             $this->set_code("01");
             $this->set_msg("User tersimpan");
-            $this->set_data("user", ["id"=>$uid, "token"=>"99999"]);
+            $this->set_data("user", ["id"=>$uid, "token"=>$simpan['uid']]);
         }else{
             $this->set_code("00");
             $this->set_msg("Terdapat error!");
