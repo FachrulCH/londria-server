@@ -142,10 +142,10 @@ class Debug {
         $message = "Langsung dari kampus";
         //$devices = "dvvFRo7ZWHY:APA91bE0Ey_0DRJ6iJV0h5TM75-SI8sP8GcOaNMchpnXESEWzmL8dCX-EWCTPA7b_px9EnCdM_dTDhwyAMbC0xLdarHUeEBOhBsoCIR9UDo7R4E7qkm0AI76O5f52joX8-xBi09nKdI5";
         //$devices = "fVTWGRj2K3o:APA91bH9n5sRButOqJKTik4dTgeSjZ4LERpUxgXcq2RcZ8Lynh9LNq4dn9zvGkwzBkFE4a4Der1Wt_NkTaP3WJOtU6gSedyGpDRZOYhE1BdKyfxT8AcMKsUot080_kKqVnCQiFz6pqSm";
-        $devices = "cMrEtDTSacg:APA91bGsOuEThTFBQ-puf8UWGqz4yYO1JrbDTOjmjw7pjI_CTzAys_kVDn2odUCeOxc_HBKy5SVJC5-UM5X9HtHvNIuoeOPtPZugekIh5o0ngmrD7DVHlc4ayBqhnREp922EQgrX5uOp";
+        $devices = "cVUBwZs1pjI:APA91bEEcDutaeZFXP-TsgGA2N8z79VT_AVvcXPIciAJh3TlWjy8ca6fJgOSs9BetzjkNXh-wRCAcfOyrGcvpClRW7PhqJHwoJ3m9lEWVozy6pl33HO5MDKsCj1wY9TrMyGd0bA7UR7b";
         
         $data = array(
-            "title" => "Oke baiklah",
+            "title" => "Oke baiklah ini terakhir",
             "message" => "Kurir kami sedang menuju ke lokasi kamu",
             //"image" => "https://dl.dropboxusercontent.com/u/887989/antshot.png",
             "content-available" => "1",
